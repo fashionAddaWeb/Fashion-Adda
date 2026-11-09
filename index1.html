@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion ADDA | Luxury Fashion</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,serif;background:#100f0e;color:#f8f0df}
+header{background:#080808;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:1px solid #bd963e}
+.logo{font-size:30px;color:#d8b45b;font-weight:bold}
+nav a{color:#fff;text-decoration:none;margin:10px;font-size:15px}
+.hero{text-align:center;padding:65px 15px;background:linear-gradient(120deg,#17130d,#30230d,#100f0e)}
+.hero h1{font-size:42px;color:#e5bd62;margin-bottom:12px}
+.hero p{color:#ddd;margin-bottom:20px}
+.gold{color:#d8b45b}
+button{background:#c59b43;color:#100f0e;border:0;padding:11px 18px;border-radius:5px;cursor:pointer;font-weight:bold}
+button:hover{background:#f0d18b}
+section{padding:35px 6%}
+h2{text-align:center;color:#e4bd65;margin-bottom:25px}
+.categories{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:25px}
+.categories button{background:#29241a;color:#e5bd62;border:1px solid #bd963e}
+.categories button.active{background:#c59b43;color:#111}
+#productGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px}
+.product{background:#1d1b18;border:1px solid #66502b;border-radius:10px;overflow:hidden}
+.product img{width:100%;height:230px;object-fit:cover;background:#333}
+.product-info{padding:15px}
+.product h3{color:#e5bd62;margin-bottom:8px}
+.product p{color:#ddd;margin:7px 0;font-size:14px}
+.price{font-size:18px;color:#e5bd62;font-weight:bold}
+.old{text-decoration:line-through;color:#999;font-size:13px;margin-left:8px}
+.stock{font-size:13px;color:#78d99a}
+.out{color:#ff7777}
+.product button{margin-top:10px;width:100%}
+#admin{background:#1a1814;border-top:1px solid #bd963e}
+input,select,textarea{width:100%;padding:12px;margin:7px 0 14px;background:#292621;color:white;border:1px solid #76603a;border-radius:5px}
+label{color:#e5bd62}
+.admin-box{max-width:650px;margin:auto;background:#211f1a;padding:22px;border-radius:10px;border:1px solid #76603a}
+.admin-box h3{color:#e5bd62;margin:12px 0}
+.admin-box button{margin:5px}
+.manage-item{padding:12px;border-bottom:1px solid #66502b;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+footer{text-align:center;background:#080808;padding:28px 12px;color:#aaa;line-height:1.8}
+footer h3{color:#d8b45b}
+.small{font-size:13px;color:#aaa}
+#message{margin:10px 0;color:#e5bd62}
+@media(max-width:600px){
+ .hero h1{font-size:30px}
+ header{justify-content:center;gap:15px}
+ nav{text-align:center}
+ nav a{margin:6px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">FASHION ADDA</div>
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#shop">Shop</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="#admin">Admin</a>
+ </nav>
+</header>
+
+<div class="hero" id="home">
+ <h1>Style That Defines You</h1>
+ <p>Discover Elegance. Experience Luxury.</p>
+ <a href="#shop"><button>Explore Collection</button></a>
+</div>
+
+<section id="shop">
+ <h2>Our Collection</h2>
+
+ <div class="categories">
+  <button class="active" data-category="All">All</button>
+  <button data-category="Women">Women</button>
+  <button data-category="Men">Men</button>
+  <button data-category="Accessories">Accessories</button>
+ </div>
+
+ <div id="productGrid">
+  <p>Loading products...</p>
+ </div>
+</section>
+
+<section id="about">
+ <h2>About Fashion ADDA</h2>
+ <p style="text-align:center;line-height:1.8;color:#ddd">
+  Fashion ADDA brings you elegant fashion collections,
+  stylish clothing and beautiful accessories.
+  Discover your style with us.
+ </p>
+</section>
+
+<section id="contact">
+ <h2>Visit Our Store</h2>
+ <p style="text-align:center;line-height:2;color:#ddd">
+  Fashion ADDA<br>
+  1st Floor, Shettye Complex, Mandangad<br>
+  Timing: 10 AM – 10 PM<br>
+  Phone: 8208399612
+ </p>
+ <div style="text-align:center;margin-top:15px">
+  <a href="tel:8208399612"><button>Call Now</button></a>
+  <a href="https://wa.me/918208399612" target="_blank">
+   <button>WhatsApp</button>
+  </a>
+ </div>
+</section>
+
+<section id="admin">
+ <h2>Owner Admin Panel</h2>
+
+ <div class="admin-box">
+  <div id="loginArea">
+   <h3>Owner Login</h3>
+   <label>Email</label>
+   <input type="email" id="adminEmail" placeholder="Owner email">
+   <label>Password</label>
+   <input type="password" id="adminPassword" placeholder="Password">
+   <button id="loginBtn">Login</button>
+  </div>
+
+  <div id="adminArea" hidden>
+   <h3>Manage Products</h3>
+
+   <label>Product Name</label>
+   <input id="pname" placeholder="Enter product name">
+
+   <label>Category</label>
+   <select id="pcat">
+    <option>Women</option>
+    <option>Men</option>
+    <option>Accessories</option>
+   </select>
+
+   <label>Price</label>
+   <input type="number" id="price" placeholder="Enter price">
+
+   <label>Offer Price (optional)</label>
+   <input type="number" id="offer" placeholder="Enter offer price">
+
+   <label>Description</label>
+   <textarea id="desc" placeholder="Product description"></textarea>
+
+   <label>Product Image</label>
+   <input type="file" id="imageFile" accept="image/*">
+
+   <label>Stock Status</label>
+   <select id="pstock">
+    <option value="true">In Stock</option>
+    <option value="false">Out of Stock</option>
+   </select>
+
+   <input type="hidden" id="editId">
+
+   <button id="saveBtn">Save Product</button>
+   <button id="clearBtn">Clear Form</button>
+   <button id="logoutBtn">Logout</button>
+
+   <p id="message"></p>
+
+   <h3>Product List</h3>
+   <div id="manageList"></div>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <h3>FASHION ADDA</h3>
+ <p>Elegance | Style | Confidence</p>
+ <p>© 2026 Fashion ADDA. All Rights Reserved.</p>
+</footer>
+
+<!-- Firebase Libraries: Load these before firebase.js -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+
+<script src="firebase.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
